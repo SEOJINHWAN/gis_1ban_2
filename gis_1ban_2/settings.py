@@ -24,7 +24,8 @@ while True:
     if not line:
         break
     line = line.replace('\n', '')
-    start = line.finde('=')
+    start = line.find('=')
+
     key = line[:start]
     value = line[start+1:]
     env_list[key] = value

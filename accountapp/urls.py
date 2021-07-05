@@ -5,5 +5,5 @@ from accountapp.views import introduce
 app_name = 'accountapp'
 
 urlpatterns = [
-    path('introduce/', introduce, name='hello')
+    path('introduce/', introduce, name='myself')
 ]
