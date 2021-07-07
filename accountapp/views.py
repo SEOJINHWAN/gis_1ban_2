@@ -5,4 +5,3 @@ from django.shortcuts import render
 
 def introduce(request):
     return render(request, 'accountapp/introduce.html')
-

@@ -18,6 +18,8 @@ from django.urls import path, include
 
 from accountapp.views import introduce
 
+app_name ="accountapp"
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('accountapp.urls'))
