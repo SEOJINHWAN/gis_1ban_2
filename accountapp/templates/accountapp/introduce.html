@@ -2,27 +2,15 @@
 
 {% block content %}
 
-    <style>
-    .testing {
-        background-color: aqua;
-        margin: 1rem;
-        height: 48px;
-        width: 48px;
-        border-radius: .5rem;
-    }
+    <div style="margin: 2rem; text-align: center">
+        <h1>Nice_To_Meet_You</h1>
 
+        <form action="/accounts/introduce/" method="post">
+            {% csrf_token %}
+            <input type="submit" class="px-5 btn-dark rounded-pill">
+        </form>
 
-    </style>
-
-    <div style='height: 20rem; background-color: aquamarine; margin: 2rem; border-radius: 1rem;'>
-        <h1>Enroll Your Photos</h1>
-
-    <div class="testing" style="display: block">block</div>
-    <div class="testing" style="display: inline">inline</div>
-    <div class="testing" style="display: inline-block">inline-block</div>
-    <div class="testing" style="display: none"></div>
-    <div class="testing" >default</div>
-
+        <h3>{{ text }}</h3>
     </div>
 
 {% endblock %}
