@@ -34,6 +34,9 @@
           {% endfor %}
     </div>
 
-{# 외부에서 스크립트 가져오기 #}
+    {# 외부에서 스크립트 가져오기 #}
     <script src="{% static 'js/magicgrid.js' %}"></script>
+
+    {% include 'snippets/pagination.html'  %}
+
 {% endblock %}
