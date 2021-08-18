@@ -20,8 +20,10 @@ class ProjectCreateView(CreateView):
     success_url = reverse_lazy('articleapp:list')
     template_name = 'projectapp/create.html'
 
+    # 게시판 생성에 성공하게 되면 해당 게시판으로 연결
     def get_success_url(self):
         return reverse('projectapp:detail', kwargs={'pk': self.object.pk})
+
 
 class ProjectDetailView(DetailView, MultipleObjectMixin):
     model = Project
@@ -31,11 +33,14 @@ class ProjectDetailView(DetailView, MultipleObjectMixin):
     paginate_by = 20
 
     def get_context_data(self, **kwargs):
+        # project 안에 있는 article만 가져와 article_list에 담기
         article_list = Article.objects.filter(project=self.object)
         return super().get_context_data(object_list=article_list, **kwargs)
 
+
 class ProjectListView(ListView):
     model = Project
+    # 프로젝트의 리스트를 담고 있어야 되기 때문에 다른 클래스와 달리 context_object_name이 'project_list'
     context_object_name = 'project_list'
     template_name = 'projectapp/list.html'
     paginate_by = 20
