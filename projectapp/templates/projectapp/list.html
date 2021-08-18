@@ -10,18 +10,17 @@
             margin: 0 auto;
         }
         .container div {
-              width: 45%;
-                max-width: 200px;
               display: flex;
               justify-content: center;
               align-items: center;
               border-radius: 1rem;
                 flex-direction: column;
-                box-shadow: 0 0 1rem darkgray;
     }
 
         div img {
-            width: 100%;
+            width: 7rem;
+            height: 7rem;
+            object-fit: cover;
             border-radius: 1rem;
         }
     </style>
@@ -44,7 +43,7 @@
 
     {% include 'snippets/pagination.html'  %}
 
-        </a>
+    <div class="text-center my-5">
         <a href="{% url 'projectapp:create' %}"
            class="btn btn-outline-dark rounded-pill px-5">
            Create Project
