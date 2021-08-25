@@ -1,10 +1,11 @@
-{% extends 'base.html'%}
+{% extends 'base.html' %}
 
 {% block content %}
 
     <div class="container text-center">
 
         <div class="my-5">
+            {# 제목 / 글쓴이 / 날짜 #}
             <h1 class="NNS_B">{{ target_article.title }}</h1>
             {# 좋아요 버튼 만들기 #}
             <div class="my-3">
@@ -17,10 +18,13 @@
                     {{ target_article.like }}
                 </span>
             </div>
+            {# writer(user)의 프로필에 있는 닉네임을 표시 #}
             <h4>{{ target_article.writer.profile.nickname }}</h4>
             <p>{{ target_article.created_at }}</p>
         </div>
+        <hr>
         <div class="my-5">
+            {# 게시글 내용 #}
             <img src="{{ target_article.image.url }}"
                  alt=""
                  class="article_image">
@@ -29,13 +33,16 @@
                  {{ target_article.content }}
             </div>
 
+            {# 유저와 작성자가 일치할 때만 버튼 노출 #}
             {% if target_article.writer == user %}
+            {# 게시글 상세페이지 내에 Button 만들기 #}
             <div>
+                {# 동그란 알약 모양으로 버튼을 만들고 px-5는 x축으로 padding값을 5 준다는 의미. #}
                 <a href="{% url 'articleapp:update' pk=target_article.pk %}"
                    class="btn btn-success rounded-pill px-5">
                    Update
                 </a>
-                <a href="{% url 'articleapp:delete' pk=target_article.pk %}"
+                <a href="{% url 'articleapp:detail' pk=target_article.pk %}"
                    class="btn btn-danger rounded-pill px-5">
                    Delete
                 </a>
@@ -43,7 +50,7 @@
             {% endif %}
         </div>
         <hr>
-        <div class="text-center my-5">
+        <div class="text-center my-4">
             {# 댓글 #}
             {# comment 시각화 #}
             {# comment는 프로필이나 계정처럼 하나씩만 있는 것이 아니기 때문에 모두 가져온다는 것(.all)을 추가 #}
@@ -68,7 +75,7 @@
                     {% endif %}
                 </div>
             {% endfor %}
-            {# comment 연결 #}
+            {# 댓글 #}
             {% include 'commentapp/create.html' %}
         </div>
 
