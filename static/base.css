@@ -71,3 +71,12 @@ color: dimgray;
         font-size: 5px;
     }
 }
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    color: black;
+}
