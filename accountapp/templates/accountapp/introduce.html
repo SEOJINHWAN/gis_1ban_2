@@ -3,11 +3,12 @@
 {% block content %}
 
     <div style="margin: 2rem; text-align: center">
-        <h1>Nice_To_Meet_You</h1>
+        <h1>METHOD</h1>
 
         <form action="/accounts/introduce/" method="post">
             {% csrf_token %}
-            <input type="submit" class="px-5 btn-dark rounded-pill">
+            <input type="text" name="introduce_input">
+            <input type="submit" class="px-5 btn btn-dark rounded-pill">
         </form>
 
 
