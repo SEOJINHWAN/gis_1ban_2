@@ -43,11 +43,17 @@ class LikeArticleView(RedirectView):
         user = request.user
         article = Article.objects.get(pk=kwargs['article_pk'])
 
+        likeRecord = LikeRecord.objects.filter(user=user,
+                                               article=article)
+
         try:
             db_transaction(user, article)
             messages.add_message(request, messages.SUCCESS, '좋아요가 반영되었습니다.')
 
         except ValidationError:
+            likeRecord.delete()
+            article.like -= 2
+            article.save()
             messages.add_message(request, messages.ERROR, '좋아요는 한번만 가능합니다.')
             return HttpResponseRedirect(reverse('articleapp:detail', kwargs={'pk': kwargs['article_pk']}))
 
