@@ -15,7 +15,7 @@ from commentapp.forms import CommentCreationForm
 class ArticleCreateView(CreateView):
     model = Article
     form_class = ArticleCreationForm
-    success_url = reverse_lazy('accountapp:introduce')
+    success_url = reverse_lazy('articleapp:list')
     template_name = 'articleapp/create.html'
 
     def form_valid(self, form):

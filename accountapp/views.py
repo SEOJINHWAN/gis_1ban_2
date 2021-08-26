@@ -16,25 +16,6 @@ from accountapp.forms import AccountCreationForm
 from accountapp.models import HelloWorld
 from articleapp.models import Article
 
-
-@login_required
-def introduce(request):
-    if request.method == 'POST':
-
-        temp = request.POST.get('introduce_input')
-
-        new_introduce = HelloWorld()
-        new_introduce.text = temp
-        new_introduce.save()
-
-        return HttpResponseRedirect(reverse('accountapp:introduce'))
-    else:
-        introduce_list = HelloWorld.objects.all()
-        return render(request, 'accountapp/introduce.html',
-                      context={'introduce_list': introduce_list})
-
-
-
 class AccountCreateView(CreateView):
     model = User
     form_class = UserCreationForm
