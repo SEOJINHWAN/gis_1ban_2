@@ -1,0 +1,8 @@
+# 현재 Potainer에서 가장 최신 버전
+# 더 많은 정보를 원할 경우에는 공식문서 참고
+version: "3.7"
+services:
+  django:
+    image: gis_1ban_django:1
+    ports:
+      - 8080:8000
